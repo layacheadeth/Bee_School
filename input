@@ -1,0 +1,156 @@
+package studentapp;
+import java.util.Scanner;
+public class input {
+    int increment = 000;
+    double[] score = new double[20];
+    String id[] = new String[20];
+    String[] subjectname = new String[20];
+    String[] subjectcategories = new String[20];
+    String[] studentname = new String[20];
+    String[] studentgender = new String[20];
+
+    public void subject1() {
+
+        Scanner sc = new Scanner(System.in);
+        int n;
+        System.out.print("input n: ");
+        n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            System.out.print("subject_name: ");
+            subjectname[i] = sc.next();
+            for (int j = 0; j < subjectname.length; j++) {
+                if (subjectname[i].length() < 3 || subjectname[i].length() > 25) {
+                    System.out.print("length must be between3-23\n");
+                    System.out.print("input again: ");
+                    subjectname[i] = sc.next();
+                }
+                if (!subjectname[i].contains("subject")) {
+                    System.out.print("must have word subject\n");
+                    System.out.print("input again: ");
+                    subjectname[i] = sc.next();
+                }
+                if(subjectname[i+1]==subjectname[i]){
+                    System.out.print("name must be unique");
+                }
+
+
+            }
+
+            System.out.print("subject_categories: ");
+            subjectcategories[i] = sc.next();
+            for (int k = 0; k < subjectname.length; k++) {
+                if (!subjectcategories[i].equals("Main") && !subjectcategories[i].equals("Elective")) {
+                    System.out.print("response must be Main or Elective\n");
+                    System.out.print("input again: ");
+                    subjectcategories[i] = sc.next();
+                }
+
+
+            }
+
+            setId();
+            System.out.println("id: " + id[i]);
+        }
+
+    }
+
+    private void setId() {
+        for (int i = 0; i < subjectname.length; i++) {
+            increment++;
+            this.id[i] = "ST" + increment;
+        }
+    }
+
+    public void subject2() {
+        int b = 0;
+        System.out.print("Id\t\tsubject_name\t\tsubject_categories\n");
+        for (int i = 0; i < subjectname.length; i++) {
+            if (subjectname[i] != null && subjectcategories[i] != null) {
+                System.out.println(id[i] + "\t\t" + subjectname[i] + "\t\t" + subjectcategories[i]);
+                b = 1;
+            }
+        }
+        if (b == 0) {
+            System.out.print("no data\n");
+        }
+
+    }
+
+    public void student1() {
+        Scanner sc = new Scanner(System.in);
+
+        int a;
+        System.out.print("input n: ");
+        a = sc.nextInt();
+        for (int i = 0; i < a; i++) {
+            System.out.print("student_name: ");
+            studentname[i] = sc.next();
+            for (int j = 0; j < 100; j++) {
+                if (studentname[i].length() < 3 || studentname[i].length() > 25) {
+                    System.out.print("length must be between3-23\n");
+                    System.out.print("input again: ");
+                    studentname[i] = sc.next();
+                }
+            }
+
+            System.out.print("student_gender: ");
+            studentgender[i] = sc.next();
+            for (int k = 0; k < 100; k++) {
+                if (!studentgender[i].equals("Male") && !studentgender[i].equals("Female")) {
+                    System.out.print("response must be Male or Female\n");
+                    System.out.print("input again: ");
+                    studentgender[i] = sc.next();
+                }
+            }
+        }
+    }
+
+
+    public void student2() {
+        int c = 0;
+        System.out.print("student_name\t\tstudent_gender\n");
+        for (int i = 0; i < studentname.length; i++) {
+            if (studentname[i] != null && studentgender[i] != null) {
+                System.out.println(studentname[i] + "\t\t" + studentgender[i]);
+                c = 1;
+            }
+        }
+        if (c == 0) {
+            System.out.print("no data\n");
+        }
+    }
+
+
+    public void score1() {
+        Scanner sc = new Scanner(System.in);
+        int q = 0;
+        for (int i = 0; i < subjectname.length; i++) {
+            if (studentname[i] != null && studentgender[i] != null) {
+                if (subjectname[i] != null && subjectcategories[i] != null) {
+
+                    System.out.println(studentname[i] + "\t\t" + studentgender[i]);
+                    System.out.println(id[i] + "\t\t" + subjectname[i] + "\t\t" + subjectcategories[i]);
+
+                    System.out.print("input score: ");
+                    score[i] = sc.nextDouble();
+                    q = 1;
+                }
+            }
+        }
+        if (q == 0) {
+            System.out.print("Student and subject data must be existed");
+        }
+    }
+
+    public void score2() {
+        for (int i = 0; i < subjectname.length; i++) {
+            if (studentname[i] != null && studentgender[i] != null) {
+                if (subjectname[i] != null && subjectcategories[i] != null) {
+                    System.out.println(studentname[i] + "\t\t" + studentgender[i]);
+                    System.out.println(id[i] + "\t\t" + subjectname[i] + "\t\t" + subjectcategories[i]);
+                    System.out.println("score: " + score[i]);
+                }
+            }
+        }
+    }
+}

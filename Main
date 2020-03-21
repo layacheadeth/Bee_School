@@ -1,0 +1,61 @@
+package studentapp;
+
+
+import java.util.Scanner;
+import java.lang.String;
+
+public class Main  {
+    public static void main(String[] args){
+        int ch;
+        input in=new input();
+
+
+
+        Scanner sc =new Scanner(System.in);
+        do{
+            System.out.print("\n1.Insert new subject\n");
+            System.out.print("2.View all subject\n");
+            System.out.print("3.Insert new student\n");
+            System.out.print("4.View all student\n");
+            System.out.print("5.Insert student's score\n");
+            System.out.print("6.View student's score\n");
+            System.out.print("7.exit\n");
+            System.out.print("choose one: ");
+            ch=sc.nextInt();
+
+            switch(ch){
+                case 1:{
+                    in.subject1();
+
+                }break ;
+                case 2:{
+                    in.subject2();
+
+                }break ;
+                case 3:{
+                    in.student1();
+
+                }
+                break;
+                case 4:{
+                    in.student2();
+
+                }
+                break;
+                case 5: {
+                    in.score1();
+                }
+                break;
+                case 6:{
+                    in.score2();
+
+                }
+                break;
+                case 7:{
+                    System.exit(0);
+                }
+                break;
+            }
+        }while(true);
+    }
+}
